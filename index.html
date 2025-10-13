@@ -13,24 +13,54 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
+      justify-content: flex-start;
+      min-height: 100vh;
       text-align: center;
+      padding: 60px 20px;
     }
 
-    h1 {
-      font-size: 3rem;
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    header img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid #38bdf8;
+    }
+
+    header h1 {
+      font-size: 2rem;
       font-weight: 700;
       color: #38bdf8;
-      margin-bottom: 10px;
+      margin: 0;
     }
 
-    p {
+    main p {
       font-size: 1.1rem;
-      max-width: 500px;
-      margin-bottom: 30px;
-      line-height: 1.6;
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 35px;
       color: #e2e8f0;
+    }
+
+    section {
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 25px 20px;
+      margin-bottom: 40px;
+    }
+
+    section h2 {
+      color: #38bdf8;
+      margin-bottom: 12px;
+      font-size: 1.3rem;
     }
 
     a.button {
@@ -48,18 +78,39 @@
     }
 
     footer {
-      position: absolute;
-      bottom: 15px;
       font-size: 0.9rem;
       color: #94a3b8;
+      margin-top: auto;
+      padding: 40px 0 10px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+      main p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>STARR AI</h1>
-  <p>Your browser-based research and conversation assistant — helping you interact, learn, and explore intelligently across the web.</p>
-  <a href="mailto:my.starr.ai@gmail.com" class="button">Contact Support</a>
+  <header>
+    <img src="https://i.imgur.com/2b9Q7Uf.png" alt="Starr AI Logo" />
+    <h1>STARR AI</h1>
+  </header>
+
+  <main>
+    <p>Your browser-based research and conversation assistant — helping you interact, learn, and explore intelligently across the web.</p>
+  </main>
+
+  <section>
+    <h2>About Starr AI</h2>
+    <p>Starr AI is designed to bring intelligence to your browsing experience. It acts as your personal research assistant, seamlessly integrating into any website to help you learn, analyze, and converse naturally. Whether you’re reading, researching, or brainstorming, Starr AI adapts to your needs in real-time.</p>
+  </section>
+
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=my.starr.ai@gmail.com" target="_blank" class="button">Contact Support</a>
+
   <footer>© 2025 Starr AI. All rights reserved.</footer>
 </body>
 </html>
-
