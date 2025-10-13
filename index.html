@@ -5,10 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Starr AI — Your Research & Conversation Assistant</title>
   <style>
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
+      background: linear-gradient(-45deg, #0f172a, #1e3a8a, #312e81, #1e293b);
+      background-size: 300% 300%;
+      animation: gradientMove 15s ease infinite;
       color: #f8fafc;
       display: flex;
       flex-direction: column;
@@ -17,6 +25,7 @@
       min-height: 100vh;
       text-align: center;
       padding: 60px 20px;
+      overflow-x: hidden;
     }
 
     header {
@@ -24,57 +33,70 @@
       align-items: center;
       gap: 12px;
       margin-bottom: 40px;
+      animation: fadeIn 2s ease forwards;
     }
 
     header img {
-      width: 45px;
-      height: 45px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      border: 2px solid #38bdf8;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.7);
     }
 
     header h1 {
-      font-size: 2rem;
+      font-size: 2.8rem;
       font-weight: 700;
       color: #38bdf8;
+      text-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
       margin: 0;
     }
 
     main p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       max-width: 600px;
-      line-height: 1.7;
-      margin-bottom: 35px;
+      line-height: 1.8;
       color: #e2e8f0;
+      animation: floatUp 1.8s ease forwards;
     }
 
     section {
-      max-width: 600px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 25px 20px;
-      margin-bottom: 40px;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 30px 25px;
+      margin: 40px 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(6px);
+      transition: transform 0.4s;
+    }
+
+    section:hover {
+      transform: translateY(-8px);
     }
 
     section h2 {
       color: #38bdf8;
       margin-bottom: 12px;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
     }
 
     a.button {
       text-decoration: none;
       color: white;
-      background-color: #38bdf8;
-      padding: 12px 28px;
-      border-radius: 30px;
+      background: linear-gradient(90deg, #38bdf8, #06b6d4);
+      padding: 14px 32px;
+      border-radius: 40px;
       font-weight: 600;
-      transition: background 0.3s;
+      font-size: 1.1rem;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+      transition: all 0.3s;
     }
 
     a.button:hover {
-      background-color: #0ea5e9;
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.9);
     }
 
     footer {
@@ -82,15 +104,18 @@
       color: #94a3b8;
       margin-top: auto;
       padding: 40px 0 10px;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.6rem;
-      }
-      main p {
-        font-size: 1rem;
-      }
+      header h1 { font-size: 2rem; }
+      main p { font-size: 1rem; }
+      section { padding: 20px 15px; }
     }
   </style>
 </head>
@@ -101,12 +126,13 @@
   </header>
 
   <main>
-    <p>Your browser-based research and conversation assistant — helping you interact, learn, and explore intelligently across the web.</p>
+    <p>Smarter conversations. Seamless research. <br> Starr AI brings intelligence to your browser like never before.</p>
   </main>
 
   <section>
     <h2>About Starr AI</h2>
-    <p>Starr AI is designed to bring intelligence to your browsing experience. It acts as your personal research assistant, seamlessly integrating into any website to help you learn, analyze, and converse naturally. Whether you’re reading, researching, or brainstorming, Starr AI adapts to your needs in real-time.</p>
+    <p>Starr AI is your personal web assistant that helps you explore, learn, and converse intuitively on any website.  
+    It understands your context, assists with complex queries, and evolves as you use it — making your workflow faster, smarter, and simpler.</p>
   </section>
 
   <a href="https://mail.google.com/mail/?view=cm&fs=1&to=my.starr.ai@gmail.com" target="_blank" class="button">Contact Support</a>
