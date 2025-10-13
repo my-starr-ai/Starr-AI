@@ -47,7 +47,7 @@
       }
 
       try {
-        const res = await fetch("https://YOUR-SUPABASE-PROJECT-URL/functions/v1/create-payment", {
+        const res = await fetch("https://cqkezhynvlrzhwklxdtv.supabase.co/functions/v1/create-payment", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ cone_id, email, weeks, debt_amount })
