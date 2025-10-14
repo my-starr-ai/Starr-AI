@@ -3,69 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Processing Payment — Starr AI</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #f8fafc;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      padding: 0 20px;
-    }
-    h1 {
-      color: #38bdf8;
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
-    p {
-      color: #e2e8f0;
-      font-size: 1rem;
-    }
-  </style>
+  <title>Starr AI | Payment</title>
+  <script src="https://js.paystack.co/v1/inline.js"></script>
 </head>
-<body>
-  <h1>Processing your payment...</h1>
-  <p>Please wait while we redirect you to Paystack.</p>
+<body style="font-family: Arial, sans-serif; text-align: center; margin-top: 80px;">
+  <h2>Starr AI Payment Page</h2>
+  <p>Click below to test a sample payment flow.</p>
+  <button id="payButton" style="padding: 10px 20px; background: #0078d4; color: white; border: none; border-radius: 6px; cursor: pointer;">
+    Pay ₦100 (Demo)
+  </button>
 
   <script>
-    async function initPayment() {
-      const params = new URLSearchParams(window.location.search);
-      const cone_id = params.get("cone_id");
-      const email = params.get("email");
-      const weeks = params.get("weeks");
-      const debt_amount = params.get("debt_amount");
-
-      if (!cone_id || !email) {
-        document.body.innerHTML = "<h1>Error</h1><p>Missing payment details.</p>";
-        return;
-      }
-
-      try {
-        const res = await fetch("https://cqkezhynvlrzhwklxdtv.supabase.co/functions/v1/create-payment", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ cone_id, email, weeks, debt_amount })
-        });
-        const data = await res.json();
-        if (data.success && data.data?.authorization_url) {
-          window.location.href = data.data.authorization_url;
-        } else {
-          document.body.innerHTML = "<h1>Error</h1><p>Unable to initialize payment.</p>";
-          console.error(data);
+    document.getElementById('payButton').addEventListener('click', function(){
+      var handler = PaystackPop.setup({
+        key: 'pk_test_xxxxxxxxxxxxxxxxxx', // your public key
+        email: 'demo@starr.ai',
+        amount: 10000, // 100 NGN = 10000 kobo
+        currency: 'NGN',
+        callback: function(response){
+          alert('Payment successful. Ref: ' + response.reference);
+        },
+        onClose: function(){
+          alert('Transaction closed.');
         }
-      } catch (err) {
-        document.body.innerHTML = "<h1>Error</h1><p>Something went wrong.</p>";
-        console.error(err);
-      }
-    }
-
-    initPayment();
+      });
+      handler.openIframe();
+    });
   </script>
 </body>
 </html>
