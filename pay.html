@@ -5,26 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Starr AI | Payment</title>
   <script src="https://js.paystack.co/v1/inline.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f9fafc;
+      color: #222;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    h2 { color: #0078d4; }
+    button {
+      padding: 12px 24px;
+      background: #0078d4;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+    .meta {
+      margin-top: 20px;
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
 </head>
-<body style="font-family: Arial, sans-serif; text-align: center; margin-top: 80px;">
-  <h2>Starr AI Payment Page</h2>
-  <p>Click below to test a sample payment flow.</p>
-  <button id="payButton" style="padding: 10px 20px; background: #0078d4; color: white; border: none; border-radius: 6px; cursor: pointer;">
-    Pay ₦100 (Demo)
-  </button>
+<body>
+  <h2>Complete Your Starr AI Subscription</h2>
+  <p>Click below to continue with your payment securely via Paystack.</p>
+  <button id="payButton">Proceed to Payment</button>
+  <div class="meta" id="metaInfo"></div>
 
   <script>
+    // --- Get query params ---
+    const params = new URLSearchParams(window.location.search);
+    const cone_id = params.get('cone_id') || 'CONE550';
+    const email = params.get('email') || 'demo@starr.ai';
+    const weeks = parseInt(params.get('weeks')) || 1;
+    const amount = weeks * 7000 * 100; // convert to kobo
+
+    // Display metadata summary
+    document.getElementById('metaInfo').textContent =
+      `Plan: ${weeks} week(s) • ₦${weeks * 7000} • ID: ${cone_id}`;
+
     document.getElementById('payButton').addEventListener('click', function(){
       var handler = PaystackPop.setup({
-        key: 'pk_test_xxxxxxxxxxxxxxxxxx', // your public key
-        email: 'demo@starr.ai',
-        amount: 10000, // 100 NGN = 10000 kobo
+        key: 'pk_live_xxxxxxxxxxxxxxxxxxxxx', // replace with your real Paystack public key
+        email: email,
+        amount: amount,
         currency: 'NGN',
+        metadata: {
+          cone_id: cone_id,
+          weeks: weeks,
+          intent: "subscribe"
+        },
         callback: function(response){
-          alert('Payment successful. Ref: ' + response.reference);
+          alert('✅ Payment successful! Reference: ' + response.reference);
         },
         onClose: function(){
-          alert('Transaction closed.');
+          alert('❌ Payment window closed.');
         }
       });
       handler.openIframe();
