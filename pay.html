@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Starr AI | Payment</title>
-  <link rel="stylesheet" href="style.css">
   <script src="https://js.paystack.co/v1/inline.js"></script>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Complete Your Starr-AI Subscription</h1>
-    <p>Click below to continue with your secure Paystack payment.</p>
+  <div class="container" style="text-align:center;">
+    <img src="images/Gemini_Generated_Image_mjrnmjmjrnmjmjrn.png" alt="Starr AI Logo" width="100">
+    <h2>Complete Your Starr AI Subscription</h2>
+    <p>Click below to continue with your secure payment via Paystack.</p>
     <button id="payButton">Proceed to Payment</button>
-    <div id="metaInfo" style="margin-top: 20px; color: #9ca3af; font-size: 15px;"></div>
-  </div>
+    <div class="meta" id="metaInfo"></div>
 
-  <footer>
-    <a href="terms.html">Terms</a> |
-    <a href="privacy.html">Privacy</a> |
-    <a href="refund.html">Refund Policy</a> |
-    <a href="faqs.html">FAQs</a> |
-    <a href="index.html">Home</a>
-  </footer>
+    <div class="footer-links">
+      <a href="terms.html">Terms</a> |
+      <a href="privacy.html">Privacy</a> |
+      <a href="refund.html">Refund</a> |
+      <a href="faqs.html">FAQs</a> |
+      <a href="index.html">Home</a>
+    </div>
+  </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const cone_id = params.get('cone_id') || 'CONE550';
-    const email = params.get('email') || 'user@email.com';
+    const email = params.get('email') || 'my.starr.ai@gmail.com';
     const weeks = parseInt(params.get('weeks')) || 1;
     const amount = weeks * 7000 * 100;
 
     document.getElementById('metaInfo').textContent =
       `Plan: ${weeks} week(s) • ₦${weeks * 7000} • ID: ${cone_id}`;
 
-    document.getElementById('payButton').addEventListener('click', function() {
+    document.getElementById('payButton').addEventListener('click', function(){
       var handler = PaystackPop.setup({
         key: 'pk_live_fba73b551b854c0575ed1f2f23546645150d2a35',
         email: email,
@@ -44,10 +45,10 @@
           weeks: weeks,
           intent: "subscribe"
         },
-        callback: function(response) {
+        callback: function(response){
           alert('✅ Payment successful! Reference: ' + response.reference);
         },
-        onClose: function() {
+        onClose: function(){
           alert('❌ Payment window closed.');
         }
       });
