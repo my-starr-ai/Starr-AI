@@ -1,108 +1,64 @@
-/* === STARR-AI — CLEAN, FUTURISTIC THEME === */
-
-:root {
-  --deep-blue: #0f172a;
-  --mid-blue: #1e3a8a;
-  --neon-blue: #38bdf8;
-  --soft-purple: #312e81;
-  --text-light: #e5e7eb;
-  --text-dim: #94a3b8;
-}
-
+/* ========= Starr AI Global Style ========= */
 body {
+  background: radial-gradient(circle at top left, #050505, #0b001a);
+  color: #e0e0ff;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  line-height: 1.7;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  color: var(--text-light);
-  background: linear-gradient(-45deg, var(--deep-blue), var(--mid-blue), var(--soft-purple), #1e293b);
-  background-size: 400% 400%;
-  animation: gradientMove 18s ease infinite;
-  overflow-x: hidden;
+  padding: 0;
 }
 
-/* === Background Motion === */
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+h1, h2, h3 {
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff;
 }
 
-/* === Header / Title === */
-.container {
-  text-align: center;
-  padding: 100px 20px 60px;
-  max-width: 900px;
-  margin: 0 auto;
+a {
+  color: #00ffff;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+a:hover {
+  color: #fff;
+  text-shadow: 0 0 5px #00ffff;
 }
 
-h1 {
-  font-size: 3rem;
-  color: var(--neon-blue);
-  text-shadow: 0 0 25px rgba(56,189,248,0.6);
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  margin-bottom: 15px;
-  animation: pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { text-shadow: 0 0 25px rgba(56,189,248,0.7); }
-  50% { text-shadow: 0 0 45px rgba(56,189,248,1); }
-}
-
-p {
-  color: #cbd5e1;
-  font-size: 16px;
-  max-width: 700px;
-  margin: 0 auto 40px;
-  line-height: 1.8;
-}
-
-/* === Buttons === */
-button, a.btn {
-  display: inline-block;
-  padding: 14px 34px;
-  background: rgba(56,189,248,0.1);
-  border: 1px solid rgba(56,189,248,0.4);
-  color: var(--neon-blue);
-  border-radius: 14px;
+button {
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #00ffff, #0040ff);
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  color: #fff;
   font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 15px rgba(56,189,248,0.4);
-  margin: 0 12px;
+  transition: 0.3s ease;
+}
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00ffff;
 }
 
-button:hover, a.btn:hover {
-  background: var(--neon-blue);
-  color: #0f172a;
-  box-shadow: 0 0 25px rgba(56,189,248,0.9);
-  transform: translateY(-2px);
+.container {
+  max-width: 800px;
+  margin: 80px auto;
+  padding: 30px;
+  background: rgba(20, 20, 40, 0.6);
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
 }
 
-/* === Footer === */
-footer {
+footer, .footer-links {
   text-align: center;
-  padding: 50px 0;
-  color: var(--text-dim);
-  font-size: 13px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  margin-top: 100px;
+  margin: 40px 0;
+  font-size: 14px;
+  color: #bbb;
+}
+footer a, .footer-links a {
+  color: #0ff;
+}
+footer a:hover, .footer-links a:hover {
+  color: #fff;
+  text-shadow: 0 0 6px #0ff;
 }
 
-footer a {
-  color: var(--neon-blue);
-  text-decoration: none;
-  margin: 0 6px;
-  transition: 0.2s;
-}
-
-footer a:hover {
-  color: #06b6d4;
-}
-
-/* === Smooth animation for everything === */
-* {
-  transition: all 0.3s ease;
-}
+p { text-align: left; }
