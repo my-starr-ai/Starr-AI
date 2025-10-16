@@ -21,7 +21,7 @@
       justify-content: center;
       min-height: 100vh;
       text-align: center;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     @keyframes gradientMove {
@@ -36,7 +36,7 @@
       box-shadow: 0 10px 40px rgba(0,0,0,0.4);
       border-radius: 20px;
       padding: 40px 30px;
-      max-width: 400px;
+      max-width: 420px;
       width: 90%;
       backdrop-filter: blur(8px);
       animation: fadeIn 1.2s ease;
@@ -85,11 +85,39 @@
       letter-spacing: 0.3px;
     }
 
+    .policies {
+      margin-top: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 20px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #cbd5e1;
+      text-align: left;
+      box-shadow: inset 0 0 8px rgba(255,255,255,0.05);
+    }
+
+    .policies h3 {
+      color: #38bdf8;
+      font-size: 15px;
+      margin-top: 12px;
+    }
+
     footer {
-      position: absolute;
-      bottom: 12px;
+      position: relative;
+      margin-top: 20px;
       font-size: 12px;
       color: #94a3b8;
+      text-align: center;
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -99,15 +127,33 @@
     <p>Click below to continue with your payment securely via Paystack.</p>
     <button id="payButton">Proceed to Payment</button>
     <div class="meta" id="metaInfo"></div>
+
+    <div class="policies">
+      <h3>FAQs</h3>
+      <p><strong>Q:</strong> What am I paying for?<br>
+      <strong>A:</strong> Your payment gives you access to Starr AI’s premium AI research assistant — an in-browser AI that simplifies research and lets you use top models (GPT-5, Claude, DeepSeek, etc.) easily and cheaply.</p>
+
+      <p><strong>Q:</strong> Is this a recurring payment?<br>
+      <strong>A:</strong> Yes. Subscriptions renew automatically every billing cycle (e.g., weekly or monthly) unless you cancel before renewal.</p>
+
+      <p><strong>Q:</strong> Can I get a refund?<br>
+      <strong>A:</strong> Starr AI subscriptions are non-refundable once activated, since model usage begins immediately. However, users can cancel anytime to avoid future charges.</p>
+
+      <h3>Privacy Policy</h3>
+      <p>We respect your privacy. Your personal information (email, ID, payment reference) is used solely for account management and subscription verification. We do not sell or share your data with third parties.</p>
+
+      <h3>Terms of Service</h3>
+      <p>By completing your payment, you agree to Starr AI’s fair-use policy and subscription terms. Misuse, automated scraping, or reselling of access is strictly prohibited.</p>
+    </div>
   </div>
 
-  <footer>© 2025 Starr AI</footer>
+  <footer>© 2025 Starr AI. All rights reserved.</footer>
 
   <script>
     // --- Get query params ---
     const params = new URLSearchParams(window.location.search);
     const cone_id = params.get('cone_id') || 'CONE550';
-    const email = params.get('email') || 'yourreal@email.com'; // replace with real email fallback
+    const email = params.get('email') || 'yourreal@email.com'; // fallback email
     const weeks = parseInt(params.get('weeks')) || 1;
     const amount = weeks * 7000 * 100; // convert to kobo
 
