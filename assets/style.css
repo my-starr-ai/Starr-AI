@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
 :root {
-  --deep-blue: #0a143a;
-  --mid-blue: #122860;
+  --deep-blue: #0b1745;
+  --mid-blue: #142c66;
   --neon-blue: #38bdf8;
   --accent-gold: #facc15;
   --text-light: #e5e7eb;
@@ -10,11 +8,11 @@
 
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text-light);
   background: linear-gradient(-45deg, var(--deep-blue), var(--mid-blue), #1e3a8a, #0f172a);
   background-size: 400% 400%;
-  animation: gradientMove 20s ease infinite;
+  animation: gradientMove 25s ease infinite;
   overflow-x: hidden;
 }
 
