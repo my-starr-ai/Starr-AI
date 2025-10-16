@@ -107,15 +107,54 @@
       opacity: 0.8;
     }
 
+    footer a {
+      color: #38bdf8;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: rgba(30, 41, 59, 0.95);
+      padding: 25px;
+      border-radius: 16px;
+      max-width: 700px;
+      color: #e2e8f0;
+      text-align: left;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal h2 {
+      color: #38bdf8;
+      margin-top: 0;
+    }
+
+    .close-btn {
+      float: right;
+      font-size: 22px;
+      cursor: pointer;
+      color: #94a3b8;
+    }
+
     @keyframes floatUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 600px) {
-      header h1 { font-size: 2rem; }
-      main p { font-size: 1rem; }
-      section { padding: 20px 15px; }
     }
   </style>
 </head>
@@ -137,6 +176,58 @@
 
   <a href="https://mail.google.com/mail/?view=cm&fs=1&to=my.starr.ai@gmail.com" target="_blank" class="button">Contact Support</a>
 
-  <footer>© 2025 Starr AI. All rights reserved.</footer>
+  <footer>
+    © 2025 Starr AI. All rights reserved.
+    <br>
+    <a href="#" onclick="openModal('terms')">Terms</a> |
+    <a href="#" onclick="openModal('privacy')">Privacy</a> |
+    <a href="#" onclick="openModal('refund')">Refund Policy</a> |
+    <a href="#" onclick="openModal('faqs')">FAQs</a>
+  </footer>
+
+  <!-- Modals -->
+  <div id="terms" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('terms')">&times;</span>
+      <h2>Terms and Conditions</h2>
+      <p>By using Starr AI, you agree to our subscription terms, non-refundable digital access, and responsible usage. Starr AI provides AI tools to assist in research, and all payments are securely handled via Paystack.</p>
+    </div>
+  </div>
+
+  <div id="privacy" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('privacy')">&times;</span>
+      <h2>Privacy Policy</h2>
+      <p>We collect minimal information (email, subscription data) solely to provide access and manage your account. Your details are never sold or shared. Payments are securely processed via Paystack.</p>
+    </div>
+  </div>
+
+  <div id="refund" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('refund')">&times;</span>
+      <h2>Refund Policy</h2>
+      <p>Because Starr AI is a digital subscription service, payments are non-refundable once access has been granted. However, billing errors will be reviewed if reported within 7 days.</p>
+    </div>
+  </div>
+
+  <div id="faqs" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('faqs')">&times;</span>
+      <h2>FAQs</h2>
+      <p><b>Q:</b> What is Starr AI?<br> <b>A:</b> A browser-based AI research assistant that helps you use advanced AI models anywhere online.</p>
+      <p><b>Q:</b> Can I cancel my plan?<br> <b>A:</b> Yes, anytime before your next billing cycle.</p>
+      <p><b>Q:</b> Is my payment secure?<br> <b>A:</b> 100%. All transactions are routed only through our verified Paystack gateway.</p>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+    window.onclick = function(e) {
+      document.querySelectorAll('.modal').forEach(m => {
+        if (e.target === m) m.style.display = 'none';
+      });
+    };
+  </script>
 </body>
 </html>
