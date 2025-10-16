@@ -3,98 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Starr-AI | Subscription Payment</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <title>Starr AI | Payment</title>
+  <link rel="stylesheet" href="style.css">
   <script src="https://js.paystack.co/v1/inline.js"></script>
-  <style>
-    .pay-box {
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-      text-align: center;
-      max-width: 420px;
-      margin: 3rem auto;
-    }
-
-    .pay-box h2 {
-      color: #1e40af;
-      margin-bottom: 0.5rem;
-    }
-
-    .pay-box p {
-      color: #4b5563;
-      font-size: 15px;
-      margin-bottom: 1.5rem;
-    }
-
-    #metaInfo {
-      margin-top: 1rem;
-      color: #6b7280;
-      font-size: 14px;
-    }
-
-    .note {
-      margin-top: 1.5rem;
-      font-size: 13px;
-      color: #9ca3af;
-    }
-  </style>
 </head>
 <body>
-  <header>
-    <h1>Complete Your Subscription</h1>
-    <p>Pay securely with Paystack to activate your Starr-AI access.</p>
-  </header>
-
-  <div class="pay-box">
-    <h2>Starr-AI Premium Access</h2>
-    <p>Fast, secure, and easy — your AI tools await.</p>
-    <button class="primary" id="payButton">Proceed to Payment</button>
-    <div id="metaInfo"></div>
-    <p class="note">Payments are non-refundable once activated.</p>
+  <div class="container">
+    <h1>Complete Your Starr-AI Subscription</h1>
+    <p>Click below to continue with your secure Paystack payment.</p>
+    <button id="payButton">Proceed to Payment</button>
+    <div id="metaInfo" style="margin-top: 20px; color: #9ca3af; font-size: 15px;"></div>
   </div>
 
   <footer>
-    <a href="terms.html">Terms</a> | 
-    <a href="privacy.html">Privacy</a> | 
-    <a href="refund.html">Refund Policy</a> | 
-    <a href="faqs.html">FAQs</a> | 
+    <a href="terms.html">Terms</a> |
+    <a href="privacy.html">Privacy</a> |
+    <a href="refund.html">Refund Policy</a> |
+    <a href="faqs.html">FAQs</a> |
     <a href="index.html">Home</a>
   </footer>
 
   <script>
-    // --- Get query params ---
     const params = new URLSearchParams(window.location.search);
-    const cone_id = params.get("cone_id") || "CONE550";
-    const email = params.get("email") || "user@example.com";
-    const weeks = parseInt(params.get("weeks")) || 1;
-    const amount = weeks * 7000 * 100; // amount in kobo (₦7000/week)
+    const cone_id = params.get('cone_id') || 'CONE550';
+    const email = params.get('email') || 'user@email.com';
+    const weeks = parseInt(params.get('weeks')) || 1;
+    const amount = weeks * 7000 * 100;
 
-    // --- Display metadata summary ---
-    document.getElementById("metaInfo").textContent =
+    document.getElementById('metaInfo').textContent =
       `Plan: ${weeks} week(s) • ₦${weeks * 7000} • ID: ${cone_id}`;
 
-    // --- Paystack Setup ---
-    document.getElementById("payButton").addEventListener("click", function () {
-      const handler = PaystackPop.setup({
-        key: "pk_live_fba73b551b854c0575ed1f2f23546645150d2a35", // your live public key
+    document.getElementById('payButton').addEventListener('click', function() {
+      var handler = PaystackPop.setup({
+        key: 'pk_live_fba73b551b854c0575ed1f2f23546645150d2a35',
         email: email,
         amount: amount,
-        currency: "NGN",
+        currency: 'NGN',
         metadata: {
           cone_id: cone_id,
           weeks: weeks,
-          intent: "subscribe",
+          intent: "subscribe"
         },
-        callback: function (response) {
-          alert("✅ Payment successful! Reference: " + response.reference);
-          // Optional: redirect or call webhook confirmation page here
+        callback: function(response) {
+          alert('✅ Payment successful! Reference: ' + response.reference);
         },
-        onClose: function () {
-          alert("❌ Payment window closed.");
-        },
+        onClose: function() {
+          alert('❌ Payment window closed.');
+        }
       });
       handler.openIframe();
     });
