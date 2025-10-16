@@ -1,41 +1,47 @@
+/* === STARR-AI — CLEAN, FUTURISTIC THEME === */
+
 :root {
-  --deep-blue: #0b1745;
-  --mid-blue: #142c66;
+  --deep-blue: #0f172a;
+  --mid-blue: #1e3a8a;
   --neon-blue: #38bdf8;
-  --accent-gold: #facc15;
+  --soft-purple: #312e81;
   --text-light: #e5e7eb;
+  --text-dim: #94a3b8;
 }
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: var(--text-light);
-  background: linear-gradient(-45deg, var(--deep-blue), var(--mid-blue), #1e3a8a, #0f172a);
+  background: linear-gradient(-45deg, var(--deep-blue), var(--mid-blue), var(--soft-purple), #1e293b);
   background-size: 400% 400%;
-  animation: gradientMove 25s ease infinite;
+  animation: gradientMove 18s ease infinite;
   overflow-x: hidden;
 }
 
+/* === Background Motion === */
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
+/* === Header / Title === */
 .container {
   text-align: center;
-  padding: 60px 20px;
-  max-width: 800px;
+  padding: 100px 20px 60px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 h1 {
   font-size: 3rem;
   color: var(--neon-blue);
-  text-shadow: 0 0 30px rgba(56, 189, 248, 0.6);
+  text-shadow: 0 0 25px rgba(56,189,248,0.6);
   font-weight: 700;
-  letter-spacing: 1px;
-  animation: pulse 3s ease-in-out infinite;
+  letter-spacing: 0.5px;
+  margin-bottom: 15px;
+  animation: pulse 4s ease-in-out infinite;
 }
 
 @keyframes pulse {
@@ -46,44 +52,57 @@ h1 {
 p {
   color: #cbd5e1;
   font-size: 16px;
-  max-width: 600px;
-  margin: 20px auto 40px;
-  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
 }
 
+/* === Buttons === */
 button, a.btn {
   display: inline-block;
   padding: 14px 34px;
-  background: linear-gradient(90deg, var(--neon-blue), var(--accent-gold));
-  color: #041923;
-  border: none;
-  border-radius: 40px;
+  background: rgba(56,189,248,0.1);
+  border: 1px solid rgba(56,189,248,0.4);
+  color: var(--neon-blue);
+  border-radius: 14px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.25s ease;
-  box-shadow: 0 10px 40px rgba(56,189,248,0.4);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(56,189,248,0.4);
+  margin: 0 12px;
 }
 
 button:hover, a.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 50px rgba(56,189,248,0.7);
+  background: var(--neon-blue);
+  color: #0f172a;
+  box-shadow: 0 0 25px rgba(56,189,248,0.9);
+  transform: translateY(-2px);
 }
 
+/* === Footer === */
 footer {
   text-align: center;
-  padding: 20px;
-  color: #94a3b8;
+  padding: 50px 0;
+  color: var(--text-dim);
   font-size: 13px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 100px;
 }
 
 footer a {
   color: var(--neon-blue);
   text-decoration: none;
-  margin: 0 8px;
+  margin: 0 6px;
+  transition: 0.2s;
 }
 
 footer a:hover {
-  color: var(--accent-gold);
+  color: #06b6d4;
+}
+
+/* === Smooth animation for everything === */
+* {
+  transition: all 0.3s ease;
 }
