@@ -3,181 +3,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Starr AI | Payment</title>
+  <title>Starr-AI | Subscription Payment</title>
+  <link rel="stylesheet" href="assets/style.css" />
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(-45deg, #0f172a, #1e3a8a, #312e81, #1e293b);
-      background-size: 400% 400%;
-      animation: gradientMove 15s ease infinite;
-      color: #e5e7eb;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      overflow-x: hidden;
-    }
-
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .container {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-      border-radius: 20px;
-      padding: 40px 30px;
-      max-width: 420px;
-      width: 90%;
-      backdrop-filter: blur(8px);
-      animation: fadeIn 1.2s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h2 {
-      color: #38bdf8;
-      text-shadow: 0 0 15px rgba(56,189,248,0.4);
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    p {
-      color: #d1d5db;
-      font-size: 14px;
-      margin-bottom: 24px;
-    }
-
-    button {
-      padding: 12px 26px;
-      background: linear-gradient(90deg, #38bdf8, #06b6d4);
-      color: #041923;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 600;
-      box-shadow: 0 8px 30px rgba(6,182,212,0.25);
-      transition: all 0.25s ease;
-    }
-
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 35px rgba(6,182,212,0.4);
-    }
-
-    .meta {
-      margin-top: 20px;
-      color: #9ca3af;
-      font-size: 14px;
-      letter-spacing: 0.3px;
-    }
-
-    .policies {
-      margin-top: 40px;
-      background: rgba(255, 255, 255, 0.05);
+    .pay-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
       border-radius: 16px;
-      padding: 20px;
-      font-size: 13px;
-      line-height: 1.6;
-      color: #cbd5e1;
-      text-align: left;
-      box-shadow: inset 0 0 8px rgba(255,255,255,0.05);
-    }
-
-    .policies h3 {
-      color: #38bdf8;
-      font-size: 15px;
-      margin-top: 12px;
-    }
-
-    footer {
-      position: relative;
-      margin-top: 20px;
-      font-size: 12px;
-      color: #94a3b8;
+      padding: 2rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
       text-align: center;
+      max-width: 420px;
+      margin: 3rem auto;
     }
 
-    a {
-      color: #38bdf8;
-      text-decoration: none;
+    .pay-box h2 {
+      color: #1e40af;
+      margin-bottom: 0.5rem;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .pay-box p {
+      color: #4b5563;
+      font-size: 15px;
+      margin-bottom: 1.5rem;
+    }
+
+    #metaInfo {
+      margin-top: 1rem;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .note {
+      margin-top: 1.5rem;
+      font-size: 13px;
+      color: #9ca3af;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Complete Your Starr AI Subscription</h2>
-    <p>Click below to continue with your payment securely via Paystack.</p>
-    <button id="payButton">Proceed to Payment</button>
-    <div class="meta" id="metaInfo"></div>
+  <header>
+    <h1>Complete Your Subscription</h1>
+    <p>Pay securely with Paystack to activate your Starr-AI access.</p>
+  </header>
 
-    <div class="policies">
-      <h3>FAQs</h3>
-      <p><strong>Q:</strong> What am I paying for?<br>
-      <strong>A:</strong> Your payment gives you access to Starr AI’s premium AI research assistant — an in-browser AI that simplifies research and lets you use top models (GPT-5, Claude, DeepSeek, etc.) easily and cheaply.</p>
-
-      <p><strong>Q:</strong> Is this a recurring payment?<br>
-      <strong>A:</strong> Yes. Subscriptions renew automatically every billing cycle (e.g., weekly or monthly) unless you cancel before renewal.</p>
-
-      <p><strong>Q:</strong> Can I get a refund?<br>
-      <strong>A:</strong> Starr AI subscriptions are non-refundable once activated, since model usage begins immediately. However, users can cancel anytime to avoid future charges.</p>
-
-      <h3>Privacy Policy</h3>
-      <p>We respect your privacy. Your personal information (email, ID, payment reference) is used solely for account management and subscription verification. We do not sell or share your data with third parties.</p>
-
-      <h3>Terms of Service</h3>
-      <p>By completing your payment, you agree to Starr AI’s fair-use policy and subscription terms. Misuse, automated scraping, or reselling of access is strictly prohibited.</p>
-    </div>
+  <div class="pay-box">
+    <h2>Starr-AI Premium Access</h2>
+    <p>Fast, secure, and easy — your AI tools await.</p>
+    <button class="primary" id="payButton">Proceed to Payment</button>
+    <div id="metaInfo"></div>
+    <p class="note">Payments are non-refundable once activated.</p>
   </div>
 
-  <footer>© 2025 Starr AI. All rights reserved.</footer>
+  <footer>
+    <a href="terms.html">Terms</a> | 
+    <a href="privacy.html">Privacy</a> | 
+    <a href="refund.html">Refund Policy</a> | 
+    <a href="faqs.html">FAQs</a> | 
+    <a href="index.html">Home</a>
+  </footer>
 
   <script>
     // --- Get query params ---
     const params = new URLSearchParams(window.location.search);
-    const cone_id = params.get('cone_id') || 'CONE550';
-    const email = params.get('email') || 'yourreal@email.com'; // fallback email
-    const weeks = parseInt(params.get('weeks')) || 1;
-    const amount = weeks * 7000 * 100; // convert to kobo
+    const cone_id = params.get("cone_id") || "CONE550";
+    const email = params.get("email") || "user@example.com";
+    const weeks = parseInt(params.get("weeks")) || 1;
+    const amount = weeks * 7000 * 100; // amount in kobo (₦7000/week)
 
-    // Display metadata summary
-    document.getElementById('metaInfo').textContent =
+    // --- Display metadata summary ---
+    document.getElementById("metaInfo").textContent =
       `Plan: ${weeks} week(s) • ₦${weeks * 7000} • ID: ${cone_id}`;
 
-    document.getElementById('payButton').addEventListener('click', function() {
-      var handler = PaystackPop.setup({
-        key: 'pk_live_fba73b551b854c0575ed1f2f23546645150d2a35', // your live Paystack public key
+    // --- Paystack Setup ---
+    document.getElementById("payButton").addEventListener("click", function () {
+      const handler = PaystackPop.setup({
+        key: "pk_live_fba73b551b854c0575ed1f2f23546645150d2a35", // your live public key
         email: email,
         amount: amount,
-        currency: 'NGN',
+        currency: "NGN",
         metadata: {
           cone_id: cone_id,
           weeks: weeks,
-          intent: "subscribe"
+          intent: "subscribe",
         },
-        callback: function(response) {
-          alert('✅ Payment successful! Reference: ' + response.reference);
+        callback: function (response) {
+          alert("✅ Payment successful! Reference: " + response.reference);
+          // Optional: redirect or call webhook confirmation page here
         },
-        onClose: function() {
-          alert('❌ Payment window closed.');
-        }
+        onClose: function () {
+          alert("❌ Payment window closed.");
+        },
       });
       handler.openIframe();
     });
